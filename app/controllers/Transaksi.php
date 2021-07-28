@@ -18,6 +18,35 @@
             $this->view('transaksi/index', $data);
         }
 
+        public function show($id)
+        {
+            $transaksi = $this->transaksiModel->getTransaksiById($id);
+            $detail_transaksi = $this->transaksiModel->getTransaksiMenuList($id);
+            $data = [
+                'transaksi' => $transaksi,
+                'detail_transaksi' => $detail_transaksi
+            ];
+            $this->view('transaksi/show', $data);
+        }
+
+        public function destroy($id)
+        {
+            // Get existing post from model
+            $transaksi = $this->transaksiModel->getTransaksiById($id);
+
+            //Check for owner
+            if( $transaksi->kasir != $_SESSION['user_nip'] ){
+                flash('error', 'Transaksi hanya bisa dihapus oleh kasir yang berwenang!');
+                redirect('transaksi');
+            }
+            if( $this->transaksiModel->destroyTransaksi($id) ){
+                flash('success', 'Transaksi berhasil dihapuskan!');
+                redirect('transaksi');
+            } else {
+                die('Something went wrong');
+            }
+        }
+
         // ALUR TRANSAKSI
 
         public function start()

@@ -9,6 +9,23 @@
            $this->db = new Database();
         }
 
+        public function destroyTransaksi($id)
+        {
+            $this->db->query('DELETE FROM detail_transaksi where id_transaksi = :id');
+            $this->db->bind(':id', $id);
+            if( $this->db->execute() ){
+                $this->db->query('DELETE FROM transaksi where id = :id');
+                $this->db->bind(':id', $id);
+                if( $this->db->execute() ){
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+
         // Alur Transaksi
 
         public function getTransaksiList()
@@ -17,6 +34,13 @@
                                 from transaksi t left join pengguna p on t.kasir = p.nip 
                                 order by t.tanggal desc');
             return $this->db->resultSet();
+        }
+
+        public function getTransaksiById($id)
+        {
+            $this->db->query('select * from transaksi where id = :id');
+            $this->db->bind(':id',$id);
+            return $this->db->single();
         }
 
         public function storeTransaksiId()
@@ -29,7 +53,7 @@
 
         public function getTransaksiMenuList($id)
         {
-            $this->db->query('SELECT menu.nama_menu, menu.harga, detail_transaksi.jumlah_beli, total_harga
+            $this->db->query('SELECT detail_transaksi.id, menu.nama_menu, menu.harga, detail_transaksi.jumlah_beli, total_harga
                                 FROM menu JOIN detail_transaksi ON menu.id = detail_transaksi.id_menu
                                 WHERE detail_transaksi.id_transaksi = :id');
             $this->db->bind(':id', $id);
