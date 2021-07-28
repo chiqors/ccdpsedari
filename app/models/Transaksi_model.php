@@ -24,8 +24,6 @@
             $this->db->query('INSERT INTO transaksi (tanggal, sub_total, kupon, total_harga, bayar, kembalian, kasir) 
                                 values (null, null, null, null, null, null, null)');
 
-            // Get Last Inserted Id
-            // print_r($this->db->resultLastId);
             return $this->db->resultLastId();
         }
 
@@ -93,12 +91,11 @@
             $this->db->bind(':bayar', $data['bayar']);
             $this->db->bind(':kembalian', $data['kembalian']);
             $this->db->bind(':kasir', $data['kasir']);
-            // die(var_dump($this->db->debugParams()));
             // Execute
-            // if( $this->db->execute() ){
-            //     return true;
-            // } else {
-            //     return false;
-            // }
+            if( $this->db->execute() ){
+                return true;
+            } else {
+                return false;
+            }
         }
     }
