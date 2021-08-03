@@ -7,6 +7,7 @@
     * Bind Values
     * Return rows and results
     */
+
     class Database
     {
         private $host = DB_HOST;

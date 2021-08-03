@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="<?php echo URL_ROOT; ?>/cpanel/vendor/bootstrap-datetimepicker/tempusdominus-bootstrap-4.min.css" />
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-collapse layout-top-nav">
    <div class="wrapper">
       <?php require APP_ROOT .'/views/inc/navbar.php'; ?>
       <?php require APP_ROOT .'/views/inc/leftsider.php'; ?>

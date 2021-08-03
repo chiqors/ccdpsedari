@@ -20,7 +20,7 @@
 <div class="container">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <div class="container-fluid">
+        <div class="container-">
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>Data Transaksi</h1>
@@ -92,9 +92,9 @@
                                     <tr>
                                         <td><?php echo $transaksi->id; ?></td>
                                         <td><?php echo $transaksi->tanggal; ?></td>
-                                        <td><?php echo $transaksi->sub_total; ?></td>
-                                        <td><?php echo $transaksi->kupon; ?></td>
-                                        <td><?php echo $transaksi->total_harga; ?></td>
+                                        <td>Rp. <?php echo $transaksi->sub_total; ?></td>
+                                        <td>Kupon #<?php echo $transaksi->kupon; ?></td>
+                                        <td>Rp. <?php echo $transaksi->total_harga; ?></td>
                                         <td><?php echo $transaksi->kasir; ?></td>
                                         <td>
                                             <a href="<?php echo URL_ROOT; ?>/transaksi/show/<?php echo $transaksi->id; ?>" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> Tampil</a> | 

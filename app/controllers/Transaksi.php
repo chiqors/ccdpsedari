@@ -1,6 +1,5 @@
 <?php
 
-
     class Transaksi extends Controller
     {
         public function __construct()

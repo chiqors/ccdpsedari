@@ -3,7 +3,7 @@
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1>Alur Transaksi (Bagian Terakhir) <small></small></h1>
@@ -41,7 +41,7 @@
 
 <!-- Main content -->
 <section class="content">
-    <div class="container-fluid">
+    <div class="container">
         <form role="form" action="<?php echo URL_ROOT; ?>/transaksi/store_transaksi/<?php echo $_SESSION['info_alur_id_transaksi']; ?>" enctype="multipart/form-data" method="POST">
             <div class="row">
                 <!-- left column -->
